@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+	<title>select-group</title>
+	<link rel="stylesheet" href="../plugin/jquery-chosn/chosen.css" />
+	<script src="../plugin/jquery/jquery-1.9.1.min.js"></script>
+	<script src="../plugin/jquery-chosn/jquery.chosn.js"></script>
+</head>
+<style>
+	.group-result {
+    cursor: pointer !important;
+}
+	.chosen-choices li{
+		height:29px;
+		/*font-style:20px;*/
+		line-height: 29px;
+	}
+</style>
+<body>
+		
+		<select id="ranktype" name="ranktypeselect[]" multiple="multiple" size="5" style="display: none;">
+		  <optgroup label="OFF" class="active-result23">
+		    <option class="classQB">QB</option>
+		    <option>RB</option>
+		    <option>WR</option>
+		    <option>TE</option>
+		    <option>OL</option>
+		  </optgroup>
+		  <optgroup value="1111" label="IDP">
+		    <option value="nt">NT</option>
+		    <option>DT</option>
+		    <option>DE</option>
+		    <option>DL</option>
+		    <option>DB</option>
+		    <option>LB</option>
+		    <option>SF</option>
+		    <option>CB</option>
+		  </optgroup>
+		  <optgroup label="ETC">
+		    <option>K</option>
+		    <option>P</option>
+		    <optgroup label="ETC1">
+		    <option>LS</option>
+		    <option>D/ST</option>
+		    </optgroup>
+		  </optgroup>
+		</select>
+		<script>
+			$('#ranktype').chosen(
+				{
+					width: '95%', 
+					height: '40px',
+					display_selected_options:false,
+//					single_backstroke_delete:false
+       				placeholder_text_multiple:"请选择内容",
+       				inherit_select_classes: true,
+				});
+
+//				// Add select/deselect all toggle to optgroups in chosen
+//				$(document).on('click', '.group-result', function() {
+//				    // Get unselected items in this group
+//				    var unselected = $(this).nextUntil('.group-result').not('.result-selected');
+//				    if(unselected.length) {
+//				        // Select all items in this group
+//				        unselected.trigger('mouseup');
+//				    } else {
+//				        $(this).nextUntil('.group-result').each(function() {
+//				            // Deselect all items in this group
+//				            $('a.search-choice-close[data-option-array-index="' + $(this).data('option-array-index') + '"]').trigger('click');
+//				        });
+//				    }
+//				});
+				$(document).on("click",".group-result,.group-option",function(){
+					var ss=$(this).text();
+//					var ss=$('#ranktype option:selected').val();
+					$('.chosen-choices').html("<li>"+ss+"</li>")
+//		                var ff=$(this).prop("class")
+//		                console.log(ff)
+						
+				})
+
+		</script>
+</body>
+</html>
